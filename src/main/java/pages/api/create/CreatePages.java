@@ -4,24 +4,21 @@ import helper.api.ApiUtils;
 import io.restassured.response.Response;
 
 import java.io.IOException;
-import java.math.BigInteger;
 import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 
 public class CreatePages {
     private ApiUtils apiUtils;
+     Response response;
 
+    public CreatePages(ApiUtils apiUtils) {
+        this.apiUtils = apiUtils;
+    }
 
 
     public Response getListUser() throws IOException {
-        return ApiUtils.getRequestSpec()
-                .when()
-                .get("/user/");
-    }
-
-    public Response getListUser(String dateParams) throws IOException {
-        return ApiUtils.getRequestSpec()
+        return apiUtils.getRequestSpec()
                 .when()
                 .get("/user/");
     }
@@ -46,8 +43,7 @@ public class CreatePages {
 
     public Response deleteData(String id) throws IOException {
         return ApiUtils.getRequestSpec()
-                .when()
-                .delete("/user/" + id);
+                .when().delete("/user/" + id);
     }
 
 

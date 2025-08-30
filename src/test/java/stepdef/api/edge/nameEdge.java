@@ -1,9 +1,12 @@
 package stepdef.api.edge;
 
+import helper.api.ApiUtils;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 import pages.api.create.CreatePages;
+import pages.api.get.GetPages;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -16,8 +19,10 @@ public class nameEdge {
     private final CreatePages createPages;
     private Response response;
 
-    public nameEdge(){
-        createPages = new CreatePages();
+    public nameEdge() throws IOException {
+        RequestSpecification requestSpecification = ApiUtils.getRequestSpec();
+        ApiUtils apiUtils = new ApiUtils(requestSpecification);
+        createPages = new CreatePages(apiUtils);
     }
 
 

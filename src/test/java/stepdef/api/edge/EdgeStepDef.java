@@ -1,10 +1,13 @@
 package stepdef.api.edge;
 
+import helper.api.ApiUtils;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.restassured.internal.common.assertion.Assertion;
 import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 import pages.api.create.CreatePages;
+import pages.api.get.GetPages;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -17,8 +20,10 @@ public class EdgeStepDef {
     private final CreatePages createPages;
     private Response response;
 
-    public EdgeStepDef() {
-        createPages = new CreatePages();
+    public EdgeStepDef() throws IOException {
+        RequestSpecification requestSpecification = ApiUtils.getRequestSpec();
+        ApiUtils apiUtils = new ApiUtils(requestSpecification);
+        createPages = new CreatePages(apiUtils);
     }
 
 
@@ -32,13 +37,6 @@ public class EdgeStepDef {
         edgeData.put("email", email);
 
         response = createPages.postData(edgeData);
-//        System.out.println(response.prettyPrint() + response.statusCode());
-//
-//        response.then()
-//                .body("title", org.hamcrest.Matchers.equalTo(title))
-//                .body("firstName", org.hamcrest.Matchers.equalTo(firstname))
-//                .body("lastName", org.hamcrest.Matchers.equalTo(lastname))
-//                .body("email", org.hamcrest.Matchers.equalTo(email));
     }
 
     @Then("code is {int}")

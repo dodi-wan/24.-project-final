@@ -1,10 +1,13 @@
 package stepdef.api.filter;
 
+import helper.api.ApiUtils;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 import pages.api.create.CreatePages;
+import pages.api.get.GetPages;
 
 import java.io.IOException;
 
@@ -14,8 +17,10 @@ public class GetDataStepDef {
     private Response response;
     private static String getId;
 
-    public GetDataStepDef(){
-        createPages = new CreatePages();
+    public GetDataStepDef() throws IOException {
+        RequestSpecification requestSpecification = ApiUtils.getRequestSpec();
+        ApiUtils apiUtils = new ApiUtils(requestSpecification);
+        createPages = new CreatePages(apiUtils);
 
     }
 

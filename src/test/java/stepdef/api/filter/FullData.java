@@ -1,11 +1,14 @@
 package stepdef.api.filter;
 
+import helper.api.ApiUtils;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 import org.json.JSONObject;
 import pages.api.create.CreatePages;
+import pages.api.get.GetPages;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -20,8 +23,10 @@ public class FullData {
     private Response response;
     private static String createId;
 
-    public FullData(){
-        createPages = new CreatePages();
+    public FullData() throws IOException {
+        RequestSpecification requestSpecification = ApiUtils.getRequestSpec();
+        ApiUtils apiUtils = new ApiUtils(requestSpecification);
+        createPages = new CreatePages(apiUtils);
     }
 
 
@@ -79,5 +84,10 @@ public class FullData {
         String id = createId;
         response = createPages.deleteData(id);
         System.out.println(response.prettyPrint() + response.statusCode());
+    }
+
+    @Then("the response is {int}")
+    public void theResponseIs(int statuscode) {
+        assertEquals(statuscode, response.getStatusCode());
     }
 }

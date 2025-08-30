@@ -1,7 +1,6 @@
 package helper.api;
 
-import io.restassured.RestAssured;
-import io.restassured.response.Response;
+
 import io.restassured.specification.RequestSpecification;
 
 import java.io.FileInputStream;
@@ -20,16 +19,17 @@ public class ApiUtils {
         this.requestSpecification = requestSpecification;
     }
 
-
-
+    public RequestSpecification getRequestSpecification(){
+        return this.requestSpecification;
+    }
 
 
     public static RequestSpecification getRequestSpec() throws IOException {
+
         Properties properties = new Properties();
         properties.load(new FileInputStream("src/main/resources/options.properties"));
 
         URL = properties.getProperty("url");
-
 
         if (requestSpecification == null){
             requestSpecification = given()

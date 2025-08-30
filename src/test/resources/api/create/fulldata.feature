@@ -7,6 +7,7 @@ Feature: Create full data
     Given input "<title>" "<firstname>" "<lastname>" "<email>" "<dateOfBirth>" "<phone>" "<picture>" and location "<street>" "<city>" "<state>" "<country>" "<timezone>"
     Then status code should 200
     And delete user
+    Then the response is 200
 
 
     Examples:
