@@ -1,6 +1,6 @@
 
 @Api
-  Feature: filter data
+  Feature: filter data have been created in current environment
 
-    Scenario: Test filter data api
+    Scenario: Test data have been created in current environment
       Given filter data api

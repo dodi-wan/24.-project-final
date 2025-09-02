@@ -10,7 +10,6 @@ import pages.api.get.GetPages;
 import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTimeoutPreemptively;
 
 public class GetStepDef {
 
@@ -27,6 +26,7 @@ public class GetStepDef {
     @Given("setup link dummyapi")
     public void setupLinkDummyapi() throws IOException {
         response = getPages.getListUser();
+        System.out.println(response.prettyPrint());
     }
 
 
@@ -34,8 +34,6 @@ public class GetStepDef {
     public void theResponseStatusCodeIs(int statuscode) {
         System.out.println(response);
         assertEquals(statuscode, response.getStatusCode());
-
-
     }
 
 

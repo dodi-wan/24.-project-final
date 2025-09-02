@@ -5,7 +5,7 @@ import io.restassured.response.Response;
 
 import java.io.IOException;
 
-public class FilterDataPages {
+public class CreatedPages {
 
 
     public Response getUserCreated() throws IOException {

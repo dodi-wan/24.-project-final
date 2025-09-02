@@ -1,26 +1,28 @@
-package pages.api.create;
+package pages.api.crud;
 
 import helper.api.ApiUtils;
 import io.restassured.response.Response;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
-import static io.restassured.RestAssured.given;
 
 public class CreatePages {
     private ApiUtils apiUtils;
-     Response response;
+
+
 
     public CreatePages(ApiUtils apiUtils) {
         this.apiUtils = apiUtils;
     }
 
 
+
     public Response getListUser() throws IOException {
         return apiUtils.getRequestSpec()
                 .when()
-                .get("/user/");
+                .get("user/");
     }
 
 
@@ -29,9 +31,9 @@ public class CreatePages {
         return ApiUtils.getRequestSpec()
                 .body(payload)
                 .when()
-                .post("/user/create");
-
+                .post("user/create");
     }
+
 
 
     public Response putData(Map<String, Object> payload, String id) throws IOException {
@@ -41,19 +43,29 @@ public class CreatePages {
                 .put("/user/"  + id);
     }
 
+
+
     public Response deleteData(String id) throws IOException {
         return ApiUtils.getRequestSpec()
                 .when().delete("/user/" + id);
     }
 
 
+
     public Response getUserById(String userId) throws IOException {
         return ApiUtils.getRequestSpec()
                 .when()
-                .get("/user?" + userId);
+                .get("user?" + userId);
     }
 
-   }
+
+
+    public Response getBulkById(List<String> id) throws IOException {
+        return ApiUtils.getRequestSpec()
+                .when()
+                .get("user/" + "?" + id);
+    }
+}
 
 
 

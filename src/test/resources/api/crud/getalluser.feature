@@ -1,3 +1,5 @@
+
+@api
 Feature: Test data API
 
   Scenario: Test API GET data

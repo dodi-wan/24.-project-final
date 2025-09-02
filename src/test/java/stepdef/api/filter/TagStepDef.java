@@ -4,8 +4,7 @@ import helper.api.ApiUtils;
 import io.cucumber.java.en.Given;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
-import pages.api.create.CreatePages;
-import pages.api.get.GetPages;
+import pages.api.crud.CreatePages;
 
 import java.io.IOException;
 
@@ -27,7 +26,7 @@ public class TagStepDef {
 
     @Given("input date current")
     public void inputDateCurrent() throws IOException {
-        date = "?date=2025-08-21";
+        date = "?date=2025-09-01";
         response  = createPages.getListUser();
         System.out.println(response.prettyPrint());
     }

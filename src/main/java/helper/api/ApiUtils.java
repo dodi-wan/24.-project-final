@@ -19,9 +19,9 @@ public class ApiUtils {
         this.requestSpecification = requestSpecification;
     }
 
-    public RequestSpecification getRequestSpecification(){
-        return this.requestSpecification;
-    }
+//    public RequestSpecification getRequestSpecification(){
+//        return this.requestSpecification;
+//    }
 
 
     public static RequestSpecification getRequestSpec() throws IOException {

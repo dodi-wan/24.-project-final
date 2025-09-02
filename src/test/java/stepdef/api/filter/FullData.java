@@ -7,14 +7,12 @@ import io.cucumber.java.en.Then;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.json.JSONObject;
-import pages.api.create.CreatePages;
-import pages.api.get.GetPages;
+import pages.api.crud.CreatePages;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class FullData {
@@ -63,12 +61,12 @@ public class FullData {
         user.put("country", country);
         user.put("timezone", timezone);
 
-
         response = createPages.postData(createData);
         createId = response.jsonPath().getString("id");
 
-        System.out.println(response.prettyPrint() + response.statusCode()
-                            + response.asPrettyString() + "\nid = " + createId);
+        System.out.println("respon code " + response.statusCode());
+        System.out.println("body " + response.prettyPrint());
+        System.out.println("ID " + createId);
     }
 
 
@@ -85,6 +83,7 @@ public class FullData {
         response = createPages.deleteData(id);
         System.out.println(response.prettyPrint() + response.statusCode());
     }
+
 
     @Then("the response is {int}")
     public void theResponseIs(int statuscode) {
