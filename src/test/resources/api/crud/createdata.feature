@@ -10,5 +10,5 @@ Feature: Create a data user API
     Then response delete data should 200
 
     Examples:
-      | title | firstname | lastname  | email            |
+      | title | firstname | lastname  | email           |
       |  mr   | Randy      | Orton    | viperko@wwe.com |

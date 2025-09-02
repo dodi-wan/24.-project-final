@@ -1,7 +1,9 @@
 
-  Feature: negative title
 
-    Scenario Outline:
+@api
+  Feature: negative create data variable gender
+
+    Scenario Outline: Test create data with negative variable gender
       Given input "<title>" "<firstname>" "<lastname>" "<email>" "<gender>"
       Then status code 400
 
