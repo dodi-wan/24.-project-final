@@ -55,7 +55,7 @@ public class CreatePages {
     public Response getUserById(String userId) throws IOException {
         return ApiUtils.getRequestSpec()
                 .when()
-                .get("user?" + userId);
+                .get("user/" + userId);
     }
 
 

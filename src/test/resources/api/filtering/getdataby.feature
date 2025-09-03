@@ -1,16 +1,16 @@
 
 @Api
-Feature: Get data single and bulk
+Feature: Get user data by single id and bulk id
 
 
 
-  Scenario: Test get data single
+  Scenario: Test get user by single id
     And get data id "60d0fe4f5311236168a109d4"
     Then response is 200
 
 
 
-    Scenario Outline: Test get bulk data
+    Scenario Outline: Test get user by bulk id
       When get bulk "<id>"
       Then status ok response is 200
       Examples:

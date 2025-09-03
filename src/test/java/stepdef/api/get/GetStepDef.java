@@ -23,8 +23,8 @@ public class GetStepDef {
     }
 
 
-    @Given("setup link dummyapi")
-    public void setupLinkDummyapi() throws IOException {
+    @Given("show all the users dummyapi")
+    public void showAllTheUsersDummyapi() throws IOException {
         response = getPages.getListUser();
         System.out.println(response.prettyPrint());
     }
@@ -35,6 +35,4 @@ public class GetStepDef {
         System.out.println(response);
         assertEquals(statuscode, response.getStatusCode());
     }
-
-
 }

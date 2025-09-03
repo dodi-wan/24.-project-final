@@ -1,16 +1,16 @@
 
 
 @api
-Feature: edit all data existing
+Feature: update data existing
 
   Description:
   "id": "60d0fe4f5311236168a109e7",
   "title": "mr",
-  "firstName": "Joey",
-  "lastName": "Oliver",
+  "firstName": "Joey", //change name
+  "lastName": "Oliver", // change name
   "picture": "https://randomuser.me/api/portraits/med/men/61.jpg"
 
-  Scenario Outline: Test edit and update all data dummy api
+  Scenario Outline: Test update data dummy api
     Given update data "<id>" "<firstName>" "<lastName>"
     Then response should be 200
 

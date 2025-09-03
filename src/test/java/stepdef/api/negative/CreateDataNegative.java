@@ -1,4 +1,4 @@
-package stepdef.api.crud;
+package stepdef.api.negative;
 
 import helper.api.ApiUtils;
 import io.cucumber.java.en.And;
@@ -15,31 +15,23 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class CreateStepDef {
+public class CreateDataNegative {
 
+
+    private Response response;
     private final CreatePages createPages;
     private static String createId;
-    private Response response;
 
 
-    public CreateStepDef() throws IOException {
+    public CreateDataNegative() throws IOException {
         RequestSpecification requestSpecification = ApiUtils.getRequestSpec();
         ApiUtils apiUtils = new ApiUtils(requestSpecification);
         createPages = new CreatePages(apiUtils);
-
     }
 
+    @Given("create data {string} {string} {string} {string}")
+    public void createData(String title, String firstname, String lastname, String email) throws IOException {
 
-    @Given("link url dummyapi")
-    public void linkUrlDummyapi() throws IOException {
-        Response getList = createPages.getListUser();
-        System.out.println("result" + getList.prettyPrint() + "\n" + "status code = " + getList.statusCode());
-    }
-
-
-
-    @Given("input data {string} {string} {string} {string}")
-    public void inputData(String title, String firstname, String lastname, String email) throws IOException {
         Map<String, Object> createData = new HashMap<>();
         createData.put("title", title);
         createData.put("firstName", firstname);
@@ -56,32 +48,30 @@ public class CreateStepDef {
         createId = response.jsonPath().getString("id");
         System.out.println("result : \n" + response.prettyPrint());
         System.out.println("ID " + createId);
-
     }
 
-
-    @Then("status code is {int}")
-    public void statusCodeIs(int statuscode) {
-        assertEquals(statuscode, response.getStatusCode());
+    @Then("response status code is {int}")
+    public void responseStatusCodeIs(int statuscode) {
+        assertEquals(statuscode, response.statusCode(), "status error");
     }
 
-
-    @And("delete data")
-    public void deleteData() throws IOException {
+    @And("delete data id")
+    public void deleteDataId() throws IOException {
         response = createPages.deleteData(createId);
-        System.out.println(response.prettyPrint() + response.statusCode());
         System.out.println("result " + response.print());
     }
 
 
-    @Then("response delete data should {int}")
-    public void responseDeleteDataShould(int statuscode) {
-        assertEquals(statuscode, response.getStatusCode());
+    @Then("get id user")
+    public void getIdUser() throws IOException {
+        response = createPages.getUserById(createId);
+        System.out.println("result " + response );
+        System.out.println("status code " + response.statusCode());
+
     }
 
-//    @Given("get id")
-//    public void getId() throws IOException {
-//        String ID = String.valueOf(createPages.getUserById(createId));
-//        System.out.println("result = " + ID);
-//    }
+    @Then("response code is {int}")
+    public void responseCodeIs(int statuscode) {
+        assertEquals(statuscode, response.statusCode());
+    }
 }
