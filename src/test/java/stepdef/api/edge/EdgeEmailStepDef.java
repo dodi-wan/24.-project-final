@@ -1,4 +1,4 @@
-package stepdef.api.negative;
+package stepdef.api.edge;
 
 import helper.api.ApiUtils;
 import io.cucumber.java.en.Given;
@@ -14,46 +14,41 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class DataNegativeStepDef {
+public class EdgeEmailStepDef {
 
     private Response response;
     private final CreatePages createPages;
-    private String createId;
-
     private RequestSpecification requestSpecification;
     private ApiUtils apiUtils;
 
-    public DataNegativeStepDef() throws IOException {
-        requestSpecification = ApiUtils.getRequestSpec();
+
+    public EdgeEmailStepDef() throws IOException {
+        requestSpecification = apiUtils.getRequestSpec();
         apiUtils = new ApiUtils(requestSpecification);
         createPages = new CreatePages(apiUtils);
     }
 
-
-    @Given("input {string} {string} {string} {string} {string}")
-    public void input(String title, String firstname, String lastname, String email, String gender) throws IOException {
+    @Given("user input data {string} {string} {string} {string}")
+    public void userInputData(String title, String firstName, String lastName, String email) throws IOException {
         Map<String, Object> createData = new HashMap<>();
         createData.put("title", title);
-        createData.put("firstName", firstname);
-        createData.put("lastName", lastname);
+        createData.put("firstName", firstName);
+        createData.put("lastName", lastName);
         createData.put("email", email);
-        createData.put("gender", gender);
 
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("firstName", firstname);
-        jsonObject.put("lastName", lastname);
+        jsonObject.put("title", title);
+        jsonObject.put("firstName", firstName);
+        jsonObject.put("lastName", lastName);
         jsonObject.put("email", email);
-        jsonObject.put("gender", gender);
 
         response = createPages.postData(createData);
-        createId = response.jsonPath().getString("id");
         System.out.println("result " + response.prettyPrint());
-        System.out.println("id " + createId);
     }
 
-    @Then("status code {int}")
-    public void statusCode(int statuscode) {
-        assertEquals(statuscode, response.getStatusCode());
+    @Then("code should be {int}")
+    public void codeShouldBe(int statuscode) {
+        assertEquals(statuscode, response.statusCode());
+        System.out.println("RESPONSE " + response.statusCode());
     }
 }
-

@@ -22,16 +22,19 @@ public class CreateDataNegative {
     private final CreatePages createPages;
     private static String createId;
 
+    private RequestSpecification requestSpecification;
+    private ApiUtils apiUtils;
+
 
     public CreateDataNegative() throws IOException {
-        RequestSpecification requestSpecification = ApiUtils.getRequestSpec();
-        ApiUtils apiUtils = new ApiUtils(requestSpecification);
+        requestSpecification = apiUtils.getRequestSpec();
+        apiUtils = new ApiUtils(requestSpecification);
         createPages = new CreatePages(apiUtils);
     }
 
+
     @Given("create data {string} {string} {string} {string}")
     public void createData(String title, String firstname, String lastname, String email) throws IOException {
-
         Map<String, Object> createData = new HashMap<>();
         createData.put("title", title);
         createData.put("firstName", firstname);
@@ -50,10 +53,12 @@ public class CreateDataNegative {
         System.out.println("ID " + createId);
     }
 
+
     @Then("response status code is {int}")
     public void responseStatusCodeIs(int statuscode) {
         assertEquals(statuscode, response.statusCode(), "status error");
     }
+
 
     @And("delete data id")
     public void deleteDataId() throws IOException {

@@ -17,11 +17,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class UpdateStepDef {
 
     private Response response;
-    private CreatePages createPages;
+    private final CreatePages createPages;
+
+    private RequestSpecification requestSpecification;
+    private ApiUtils apiUtils;
+
 
     public UpdateStepDef() throws IOException {
-        RequestSpecification requestSpecification = ApiUtils.getRequestSpec();
-        ApiUtils apiUtils = new ApiUtils(requestSpecification);
+        requestSpecification = apiUtils.getRequestSpec();
+        apiUtils = new ApiUtils(requestSpecification);
         createPages = new CreatePages(apiUtils);
     }
 

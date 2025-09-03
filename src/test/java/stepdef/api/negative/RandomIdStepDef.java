@@ -14,11 +14,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class RandomIdStepDef {
 
     private Response response;
-    private CreatePages createPages;
+    private final CreatePages createPages;
+
+    private RequestSpecification requestSpecification;
+    private ApiUtils apiUtils;
 
     public RandomIdStepDef() throws IOException {
-        RequestSpecification requestSpecification = ApiUtils.getRequestSpec();
-        ApiUtils apiUtils = new ApiUtils(requestSpecification);
+        requestSpecification = ApiUtils.getRequestSpec();
+        apiUtils = new ApiUtils(requestSpecification);
         createPages = new CreatePages(apiUtils);
     }
 

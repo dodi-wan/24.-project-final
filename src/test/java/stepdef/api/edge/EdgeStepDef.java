@@ -19,12 +19,15 @@ public class EdgeStepDef {
     private final CreatePages createPages;
     private Response response;
 
+    private RequestSpecification requestSpecification;
+    private ApiUtils apiUtils;
+
+
     public EdgeStepDef() throws IOException {
-        RequestSpecification requestSpecification = ApiUtils.getRequestSpec();
+        requestSpecification = apiUtils.getRequestSpec();
         ApiUtils apiUtils = new ApiUtils(requestSpecification);
         createPages = new CreatePages(apiUtils);
     }
-
 
 
     @Given("input data {string} {string} {string} {string} {string}")

@@ -10,15 +10,17 @@ import java.io.IOException;
 
 public class TagStepDef {
 
-    private CreatePages createPages;
+    private final CreatePages createPages;
     private static String date;
     private Response response;
 
+    private RequestSpecification requestSpecification;
+    private ApiUtils apiUtils;
 
 
     public TagStepDef() throws IOException {
-        RequestSpecification requestSpecification = ApiUtils.getRequestSpec();
-        ApiUtils apiUtils = new ApiUtils(requestSpecification);
+        requestSpecification = apiUtils.getRequestSpec();
+        apiUtils = new ApiUtils(requestSpecification);
         createPages = new CreatePages(apiUtils);
     }
 

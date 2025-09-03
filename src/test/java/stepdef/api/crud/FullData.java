@@ -21,9 +21,13 @@ public class FullData {
     private Response response;
     private static String createId;
 
+    private RequestSpecification requestSpecification;
+    private ApiUtils apiUtils;
+
+
     public FullData() throws IOException {
-        RequestSpecification requestSpecification = ApiUtils.getRequestSpec();
-        ApiUtils apiUtils = new ApiUtils(requestSpecification);
+        requestSpecification = apiUtils.getRequestSpec();
+        apiUtils = new ApiUtils(requestSpecification);
         createPages = new CreatePages(apiUtils);
     }
 

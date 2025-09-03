@@ -19,14 +19,18 @@ public class GetDataStepDef {
 
     private final CreatePages createPages;
     private Response response;
+
+    private RequestSpecification requestSpecification;
+    private ApiUtils apiUtils;
+
     private static String ID;
     private static String firstname;
     private static String lastname;
     private static String title;
 
     public GetDataStepDef() throws IOException {
-        RequestSpecification requestSpecification = ApiUtils.getRequestSpec();
-        ApiUtils apiUtils = new ApiUtils(requestSpecification);
+        requestSpecification = apiUtils.getRequestSpec();
+        apiUtils = new ApiUtils(requestSpecification);
         createPages = new CreatePages(apiUtils);
     }
 

@@ -21,12 +21,14 @@ public class CreateStepDef {
     private static String createId;
     private Response response;
 
+    private RequestSpecification requestSpecification;
+    private ApiUtils apiUtils;
+
 
     public CreateStepDef() throws IOException {
-        RequestSpecification requestSpecification = ApiUtils.getRequestSpec();
-        ApiUtils apiUtils = new ApiUtils(requestSpecification);
+        requestSpecification = apiUtils.getRequestSpec();
+        apiUtils = new ApiUtils(requestSpecification);
         createPages = new CreatePages(apiUtils);
-
     }
 
 
@@ -35,7 +37,6 @@ public class CreateStepDef {
         Response getList = createPages.getListUser();
         System.out.println("result" + getList.prettyPrint() + "\n" + "status code = " + getList.statusCode());
     }
-
 
 
     @Given("input data {string} {string} {string} {string}")
@@ -78,10 +79,4 @@ public class CreateStepDef {
     public void responseDeleteDataShould(int statuscode) {
         assertEquals(statuscode, response.getStatusCode());
     }
-
-//    @Given("get id")
-//    public void getId() throws IOException {
-//        String ID = String.valueOf(createPages.getUserById(createId));
-//        System.out.println("result = " + ID);
-//    }
 }
