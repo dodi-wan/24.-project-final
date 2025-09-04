@@ -71,12 +71,13 @@ public class CreateDataNegative {
     public void getIdUser() throws IOException {
         response = createPages.getUserById(createId);
         System.out.println("result " + response );
-        System.out.println("status code " + response.statusCode());
+
 
     }
 
     @Then("response code is {int}")
     public void responseCodeIs(int statuscode) {
         assertEquals(statuscode, response.statusCode());
+        System.out.println("status code " + response.statusCode());
     }
 }
