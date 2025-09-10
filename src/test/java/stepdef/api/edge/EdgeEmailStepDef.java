@@ -6,7 +6,7 @@ import io.cucumber.java.en.Then;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.json.JSONObject;
-import pages.api.crud.CreatePages;
+import pages.api.post.PostPage;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class EdgeEmailStepDef {
 
     private Response response;
-    private final CreatePages createPages;
+    private final PostPage postPage;
     private RequestSpecification requestSpecification;
     private ApiUtils apiUtils;
 
@@ -25,7 +25,7 @@ public class EdgeEmailStepDef {
     public EdgeEmailStepDef() throws IOException {
         requestSpecification = apiUtils.getRequestSpec();
         apiUtils = new ApiUtils(requestSpecification);
-        createPages = new CreatePages(apiUtils);
+        postPage = new PostPage(apiUtils);
     }
 
     @Given("user input data {string} {string} {string} {string}")
@@ -42,7 +42,7 @@ public class EdgeEmailStepDef {
         jsonObject.put("lastName", lastName);
         jsonObject.put("email", email);
 
-        response = createPages.postData(createData);
+        response = postPage.postData(createData);
         System.out.println("result " + response.prettyPrint());
     }
 

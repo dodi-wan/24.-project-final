@@ -6,7 +6,7 @@ import io.cucumber.java.en.Then;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.json.JSONObject;
-import pages.api.crud.CreatePages;
+import pages.api.post.PostPage;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class EdgeStepDef {
 
-    private final CreatePages createPages;
+    private final PostPage postPage;
     private Response response;
 
     private RequestSpecification requestSpecification;
@@ -26,7 +26,7 @@ public class EdgeStepDef {
     public EdgeStepDef() throws IOException {
         requestSpecification = apiUtils.getRequestSpec();
         ApiUtils apiUtils = new ApiUtils(requestSpecification);
-        createPages = new CreatePages(apiUtils);
+        postPage = new PostPage(apiUtils);
     }
 
 
@@ -48,7 +48,7 @@ public class EdgeStepDef {
         jsonObject.put("dateOfBirth", dateOfBirth);
 
 
-        response = createPages.postData(edgeData);
+        response = postPage.postData(edgeData);
         System.out.println(response.prettyPrint());
     }
 

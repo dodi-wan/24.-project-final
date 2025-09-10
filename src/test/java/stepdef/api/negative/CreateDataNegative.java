@@ -7,7 +7,9 @@ import io.cucumber.java.en.Then;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.json.JSONObject;
-import pages.api.crud.CreatePages;
+import pages.api.delete.DeletePages;
+import pages.api.get.GetPages;
+import pages.api.post.PostPage;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -19,7 +21,9 @@ public class CreateDataNegative {
 
 
     private Response response;
-    private final CreatePages createPages;
+    private final PostPage postPage;
+    private final DeletePages deletePages;
+    private final GetPages getPages;
     private static String createId;
 
     private RequestSpecification requestSpecification;
@@ -29,7 +33,9 @@ public class CreateDataNegative {
     public CreateDataNegative() throws IOException {
         requestSpecification = apiUtils.getRequestSpec();
         apiUtils = new ApiUtils(requestSpecification);
-        createPages = new CreatePages(apiUtils);
+        postPage = new PostPage(apiUtils);
+        deletePages = new DeletePages(apiUtils);
+        getPages = new GetPages(apiUtils);
     }
 
 
@@ -47,7 +53,7 @@ public class CreateDataNegative {
         jsonObject.put("lastName", lastname);
         jsonObject.put("email", email);
 
-        response = createPages.postData(createData);
+        response = postPage.postData(createData);
         createId = response.jsonPath().getString("id");
         System.out.println("result : \n" + response.prettyPrint());
         System.out.println("ID " + createId);
@@ -62,14 +68,14 @@ public class CreateDataNegative {
 
     @And("delete data id")
     public void deleteDataId() throws IOException {
-        response = createPages.deleteData(createId);
+        response = deletePages.deleteData(createId);
         System.out.println("result " + response.print());
     }
 
 
     @Then("get id user")
     public void getIdUser() throws IOException {
-        response = createPages.getUserById(createId);
+        response = getPages.getUserById(createId);
         System.out.println("result " + response );
 
 

@@ -2,10 +2,11 @@
 @Api
 Feature: Get user data by single id and bulk id
 
-
+  description:
+  the id someday will be null because the data does changing on dummyapi.io
 
   Scenario: Test get user by single id
-    And get data id "60d0fe4f5311236168a109d4"
+    And get data id "60d0fe4f5311236168a109f3"
     Then response is 200
 
 

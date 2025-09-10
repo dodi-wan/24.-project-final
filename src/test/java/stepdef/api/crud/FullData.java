@@ -7,7 +7,8 @@ import io.cucumber.java.en.Then;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.json.JSONObject;
-import pages.api.crud.CreatePages;
+import pages.api.delete.DeletePages;
+import pages.api.post.PostPage;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -17,7 +18,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class FullData {
 
-    private final CreatePages createPages;
+    private final PostPage postPage;
+    private final DeletePages deletePages;
+
     private Response response;
     private static String createId;
 
@@ -28,7 +31,8 @@ public class FullData {
     public FullData() throws IOException {
         requestSpecification = apiUtils.getRequestSpec();
         apiUtils = new ApiUtils(requestSpecification);
-        createPages = new CreatePages(apiUtils);
+        postPage = new PostPage(apiUtils);
+        deletePages = new DeletePages(apiUtils);
     }
 
 
@@ -65,7 +69,7 @@ public class FullData {
         user.put("country", country);
         user.put("timezone", timezone);
 
-        response = createPages.postData(createData);
+        response = postPage.postData(createData);
         createId = response.jsonPath().getString("id");
 
         System.out.println("respon code " + response.statusCode());
@@ -84,7 +88,7 @@ public class FullData {
     @And("delete user")
     public void deleteUser() throws IOException {
         String id = createId;
-        response = createPages.deleteData(id);
+        response = deletePages.deleteData(id);
         System.out.println(response.prettyPrint() + response.statusCode());
     }
 

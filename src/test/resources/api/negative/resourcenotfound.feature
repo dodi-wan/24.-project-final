@@ -1,8 +1,7 @@
 
 
 @Api
-Feature: create data id delete then get id already delete it
-
+Feature: create new id data and delete it then get id
   Scenario Outline: Test GET id have been delete it
     Given create data "<title>" "<firstname>" "<lastname>" "<email>"
     Then response status code is 200

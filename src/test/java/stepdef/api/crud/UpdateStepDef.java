@@ -6,7 +6,7 @@ import io.cucumber.java.en.Then;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.json.JSONObject;
-import pages.api.crud.CreatePages;
+import pages.api.put.PutPages;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class UpdateStepDef {
 
     private Response response;
-    private final CreatePages createPages;
+    private final PutPages putPages;
 
     private RequestSpecification requestSpecification;
     private ApiUtils apiUtils;
@@ -26,7 +26,7 @@ public class UpdateStepDef {
     public UpdateStepDef() throws IOException {
         requestSpecification = apiUtils.getRequestSpec();
         apiUtils = new ApiUtils(requestSpecification);
-        createPages = new CreatePages(apiUtils);
+        putPages = new PutPages(apiUtils);
     }
 
 
@@ -42,7 +42,7 @@ public class UpdateStepDef {
         updateData.put("firstName", firstName);
         updateData.put("lastName", lastName);
 
-        response = createPages.putData(updateData, id);
+        response = putPages.putData(updateData, id);
         System.out.println("update data " + response.prettyPrint());
 
     }

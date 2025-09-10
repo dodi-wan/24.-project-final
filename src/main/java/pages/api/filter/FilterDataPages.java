@@ -5,8 +5,13 @@ import io.restassured.response.Response;
 
 import java.io.IOException;
 
-public class CreatedPages {
+public class FilterDataPages {
+    private ApiUtils apiUtils;
 
+
+    public FilterDataPages(ApiUtils apiUtils) {
+        this.apiUtils = apiUtils;
+    }
 
     public Response getUserCreated() throws IOException {
         return ApiUtils.getRequestSpec()

@@ -6,7 +6,7 @@ import io.cucumber.java.en.Then;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.json.JSONObject;
-import pages.api.crud.CreatePages;
+import pages.api.post.PostPage;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class DataNegativeStepDef {
 
     private Response response;
-    private final CreatePages createPages;
+    private final PostPage postPage;
     private String createId;
 
     private RequestSpecification requestSpecification;
@@ -26,7 +26,7 @@ public class DataNegativeStepDef {
     public DataNegativeStepDef() throws IOException {
         requestSpecification = ApiUtils.getRequestSpec();
         apiUtils = new ApiUtils(requestSpecification);
-        createPages = new CreatePages(apiUtils);
+        postPage = new PostPage(apiUtils);
     }
 
 
@@ -45,7 +45,7 @@ public class DataNegativeStepDef {
         jsonObject.put("email", email);
         jsonObject.put("gender", gender);
 
-        response = createPages.postData(createData);
+        response = postPage.postData(createData);
         createId = response.jsonPath().getString("id");
         System.out.println("result " + response.prettyPrint());
         System.out.println("id " + createId);

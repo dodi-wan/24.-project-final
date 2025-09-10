@@ -6,7 +6,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
-import pages.api.crud.CreatePages;
+import pages.api.get.GetPages;
 
 
 import java.io.IOException;
@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class GetDataStepDef {
 
-    private final CreatePages createPages;
+    private final GetPages getPages;
     private Response response;
 
     private RequestSpecification requestSpecification;
@@ -31,22 +31,22 @@ public class GetDataStepDef {
     public GetDataStepDef() throws IOException {
         requestSpecification = apiUtils.getRequestSpec();
         apiUtils = new ApiUtils(requestSpecification);
-        createPages = new CreatePages(apiUtils);
+        getPages = new GetPages(apiUtils);
     }
 
 
     @And("get data id {string}")
     public void getDataId(String id) throws IOException {
-        response = createPages.getUserById(id);
-        ID = response.jsonPath().getString("data[0].id");
-        title = response.jsonPath().getString("data[0].title");
-        firstname = response.jsonPath().getString("data[0].firstName");
-        lastname = response.jsonPath().getString("data[0].lastName");
+        response = getPages.getUserById(id);
+        ID = response.jsonPath().getString("id");
+        title = response.jsonPath().getString("title");
+        firstname = response.jsonPath().getString("firstName");
+        lastname = response.jsonPath().getString("lastName");
 
         System.out.println("id = " + ID);
-        System.out.println("title =" + title);
-        System.out.println("firstname =" + firstname);
-        System.out.println("lastname =" + lastname);
+        System.out.println("title = " + title);
+        System.out.println("firstname = " + firstname);
+        System.out.println("lastname = " + lastname);
     }
 
     @Then("response is {int}")
@@ -57,11 +57,13 @@ public class GetDataStepDef {
 
 
     @When("get bulk {string}")
-    public void getBulk(String id) throws IOException {
-        List<String> addList = Arrays.asList(id.split(","));
-        response = createPages.getBulkById(addList);
-        List<String> ids = response.jsonPath().getList("data.id");
-        System.out.println("result:\n" + ids);
+    public void getBulk(String ids) throws IOException {
+        List<String> idList = Arrays.asList(ids.split(","));
+    for (String id : idList) {
+        response = getPages.getBulkById(id);
+        String returnedId = response.jsonPath().getString("id");
+        System.out.println("Fetched ID: " + returnedId);
+    }
     }
 
 

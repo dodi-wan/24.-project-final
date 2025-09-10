@@ -5,7 +5,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
-import pages.api.crud.CreatePages;
+import pages.api.get.GetPages;
 
 import java.io.IOException;
 
@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class RandomIdStepDef {
 
     private Response response;
-    private final CreatePages createPages;
+    private final GetPages getPages;
 
     private RequestSpecification requestSpecification;
     private ApiUtils apiUtils;
@@ -22,12 +22,12 @@ public class RandomIdStepDef {
     public RandomIdStepDef() throws IOException {
         requestSpecification = ApiUtils.getRequestSpec();
         apiUtils = new ApiUtils(requestSpecification);
-        createPages = new CreatePages(apiUtils);
+        getPages = new GetPages(apiUtils);
     }
 
     @Given("get {string}")
     public void get(String id) throws IOException {
-        response = createPages.getUserById(id);
+        response = getPages.getUserById(id);
         System.out.println("result " + response);
 
     }
@@ -35,5 +35,6 @@ public class RandomIdStepDef {
     @Then("response status code {int}")
     public void responseStatusCode(int statuscode) {
         assertEquals(statuscode, response.statusCode());
+        System.out.println("status respon " + response.statusCode());
     }
 }
