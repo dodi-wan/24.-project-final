@@ -30,11 +30,4 @@ public class GetPages {
 
 
 
-    public Response getBulkById(String id) throws IOException {
-        return ApiUtils.getRequestSpec()
-                .when()
-                .get("user/" + id);
-    }
-
-
 }

@@ -60,9 +60,9 @@ public class GetDataStepDef {
     public void getBulk(String ids) throws IOException {
         List<String> idList = Arrays.asList(ids.split(","));
     for (String id : idList) {
-        response = getPages.getBulkById(id);
+        response = getPages.getUserById(id);
         String returnedId = response.jsonPath().getString("id");
-        System.out.println("Fetched ID: " + returnedId);
+        System.out.println("result ID: " + returnedId);
     }
     }
 
