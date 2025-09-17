@@ -25,8 +25,9 @@ public class FilterPriceStepDef {
     @Then("choose Price \\(low to high)")
     public void choosePriceLowToHigh() {
         filterPricePages.click_low_high();
-
     }
+
+
 
     @Given("verify product Price \\(low to high)")
     public void verifyProductPriceLowToHigh() {
@@ -40,14 +41,18 @@ public class FilterPriceStepDef {
         // Bandingkan
         Assertions.assertEquals(expectedPrice, actualPrice,
                 "Price doesn't sort low to high!");
-
-
     }
+
+
+
 
     @And("choose Price \\(high to low)")
     public void choosePriceHighToLow() {
         filterPricePages.click_high_low();
     }
+
+
+
 
     @Given("verify product Price \\(high to low)")
     public void verifyProductPriceHighToLow() {

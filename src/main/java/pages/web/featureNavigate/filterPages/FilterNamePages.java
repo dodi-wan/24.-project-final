@@ -20,10 +20,10 @@ public class FilterNamePages {
 
     private WebDriverWait wait;
 
-    By click_filter_sort = By.className("product_sort_container");
-    By product_name = By.className("inventory_item_name");
-    By sort_A_Z = By.xpath("//option[text()='Name (A to Z)']");
-    By sort_Z_A = By.xpath("//option[text()='Name (Z to A)']");
+    By filterSort = By.className("product_sort_container");
+    By productName = By.className("inventory_item_name");
+    By sortAz = By.xpath("//option[text()='Name (A to Z)']");
+    By sortZa = By.xpath("//option[text()='Name (Z to A)']");
 
 
 
@@ -35,7 +35,7 @@ public class FilterNamePages {
     public void clickFilterSort() {
 
         try {
-            WebElement element = wait.until(ExpectedConditions.elementToBeClickable(click_filter_sort));
+            WebElement element = wait.until(ExpectedConditions.elementToBeClickable(filterSort));
             element.click();
         } catch (TimeoutException t) {
             System.out.println("Timeout exception " + t.getMessage());
@@ -48,7 +48,7 @@ public class FilterNamePages {
     public void clickSortAZ(){
 
         try {
-            WebElement element = wait.until(ExpectedConditions.elementToBeClickable(sort_A_Z));
+            WebElement element = wait.until(ExpectedConditions.elementToBeClickable(sortAz));
             element.click();
         } catch (TimeoutException t){
             System.out.println("Timeout exception " + t.getMessage());
@@ -59,7 +59,7 @@ public class FilterNamePages {
 
 
     public List<String> getAllProductNames() {
-        return driver.findElements(product_name)
+        return driver.findElements(productName)
                 .stream()
                 .map(WebElement::getText)
                 .collect(Collectors.toList());
@@ -69,7 +69,7 @@ public class FilterNamePages {
 
     public void clickSortZA(){
         try {
-            WebElement element = wait.until(ExpectedConditions.elementToBeClickable(sort_Z_A));
+            WebElement element = wait.until(ExpectedConditions.elementToBeClickable(sortZa));
             element.click();
         } catch (TimeoutException t){
             System.out.println("Timeout exception " + t.getMessage());

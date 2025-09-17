@@ -14,9 +14,11 @@ public class FilterNameStepDef {
 
     private final FilterNamePages filterNameAzPages;
 
+
     public FilterNameStepDef() {
         filterNameAzPages = new FilterNamePages();
     }
+
 
 
     @And("click icon logo filter {string}")
@@ -25,10 +27,12 @@ public class FilterNameStepDef {
     }
 
 
+
     @Then("choose Name \\(A to Z)")
     public void chooseNameAToZ() {
         filterNameAzPages.clickSortAZ();
     }
+
 
 
     @Given("verify product Name \\(A to Z)")
@@ -47,10 +51,12 @@ public class FilterNameStepDef {
     }
 
 
+
     @And("choose Name \\(Z to A)")
     public void chooseNameZToA() {
         filterNameAzPages.clickSortZA();
     }
+
 
 
     @Given("verify product Name \\(Z to A)")

@@ -9,6 +9,8 @@ Feature: order bug product
     And input "standard_user" and "secret_sauce"
     Then click button login
 
+
+    @web
   Scenario Outline: Test bug order product
     And click add to cart product
     And click shop cart

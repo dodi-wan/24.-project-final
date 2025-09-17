@@ -1,5 +1,5 @@
 
-
+@web
 Feature: message login
 
 

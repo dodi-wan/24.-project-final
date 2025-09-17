@@ -18,6 +18,8 @@ public class RemoveCart {
         removeCartPages.removeBackPack();
     }
 
+
+
     @Then("remove all product")
     public void removeAllProduct() {
         removeCartPages.removeAllProduct();
