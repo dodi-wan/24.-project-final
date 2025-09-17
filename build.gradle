@@ -32,4 +32,6 @@ test {
     testLogging {
         events "passed", "skipped", "failed"
     }
+
+    systemProperty "cucumber.plugin", "pretty, html:build/reports/cucumber/cucumber.html, json:build/reports/cucumber/cucumber.json"
 }
