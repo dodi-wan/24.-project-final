@@ -55,6 +55,11 @@ jobs:
     - name: Run Tests
       run: ./gradlew clean test
 
+# debug: cek isi folder report
+    - name: Debug reports path
+      if: always()
+      run: ls -R build/reports || echo "No reports found"
+
 # upload cucumber report (html + json)
     - name: Upload Reports
       if: always()
