@@ -5,15 +5,15 @@ Feature: Button All item on homepage menu bar saucedemo
 
 
   Background:
-    Given verify on homepage
-    And input "standard_user" and "secret_sauce"
-    Then click button login
-    Given verify login
+    Given user is on homepage saucedemo
+    When user input username "standard_user" and password "secret_sauce"
+    And user click button login
+    Then verify user already login page saucedemo
 
 
 @web
 Scenario: Test button About Us on homepage menu bar
-  When click shop cart
-  And click 3 strips menu at top-left window
-  Then click all item button
-  Given verify all item button
+  When user click add to cart product
+  When user click 3 strips menu at top-left window
+  And click all item button
+  Then verify user already login page saucedemo

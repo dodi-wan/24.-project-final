@@ -4,10 +4,10 @@
 Feature: Third party social media Twitter
 
   Background:
-    Given verify on homepage
-    And input "standard_user" and "secret_sauce"
-    Then click button login
-    Given verify login
+    Given user is on homepage saucedemo
+    When user input username "standard_user" and password "secret_sauce"
+    And user click button login
+    Then verify user already login page saucedemo
 
   @web
   Scenario: Test link navigate social media Twitter

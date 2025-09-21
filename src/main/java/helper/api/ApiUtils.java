@@ -1,10 +1,11 @@
 package helper.api;
 
 
+import io.restassured.RestAssured;
+import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
@@ -13,7 +14,9 @@ import static io.restassured.RestAssured.given;
 public class ApiUtils {
 
     private static RequestSpecification requestSpecification;
+    static Response lastResponse;
     private static String URL;
+
 
     public ApiUtils(RequestSpecification requestSpecification) {
         this.requestSpecification = requestSpecification;
@@ -38,5 +41,12 @@ public class ApiUtils {
 
 
 
-
+    public static Response getAfter() {
+        if (lastResponse != null) {
+            System.out.println("Last API Reponse : " + lastResponse.statusCode());
+            System.out.println("Body : " + lastResponse.asPrettyString());
+        }
+        RestAssured.reset();
+        return lastResponse;
+    }
 }

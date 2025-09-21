@@ -3,6 +3,7 @@ package stepdef.web.order;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import pages.web.order.CheckoutPages;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -17,15 +18,15 @@ public class CheckoutStepDef {
     }
 
 
-    @And("click checkout")
-    public void clickCheckout(){
+    @And("user click checkout")
+    public void userClickCheckout() {
         checkoutPages.checkoutButton();
     }
 
 
 
-    @And("input {string} {string} {string}")
-    public void input(String firstname, String lastname, String zipcode) {
+    @When("user input valid credentials {string} {string} {string}")
+    public void userInputValidCredentials(String firstname, String lastname, String zipcode) {
         checkoutPages.firstNameInput(firstname);
         checkoutPages.lastNameInput(lastname);
         checkoutPages.zipCodeInput(zipcode);
@@ -33,15 +34,15 @@ public class CheckoutStepDef {
 
 
 
-    @Then("click continue")
-    public void clickContinue() {
+    @And("user click continue button")
+    public void userClickContinueButton() {
         checkoutPages.continueButton();
     }
 
 
 
-    @Then("click finish button")
-    public void clickFinishButton() {
+    @When("user click finish button")
+    public void userClickFinishButton() {
         checkoutPages.finishButton();
     }
 
@@ -54,8 +55,9 @@ public class CheckoutStepDef {
 
 
 
-    @Then("the result is showed text {string}")
-    public void theResultIsShowedText(String expectedMessage) {
+
+    @Then("user can see title {string}")
+    public void userCanSeeTitle(String expectedMessage) {
         String actualFirstMessage = checkoutPages.messageOrder(expectedMessage);
 
         assertEquals(expectedMessage, actualFirstMessage);

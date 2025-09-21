@@ -1,5 +1,6 @@
 package stepdef.web.featureNavigate.homepage.featureAllitem;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -21,39 +22,26 @@ public class AllitemStepDef {
 
 
 
-    @When("click shop cart")
-    public void clickShopCart() {
+    @And("user click shop cart")
+    public void userClickShopCart() {
         allItemPages.shopCartButton();
     }
 
 
 
-    @Then("click all item button")
+    @And("click all item button")
     public void clickAllItemButton() {
         allItemPages.allItemButton();
     }
 
 
 
-    @Given("verify all item button")
-    public void verifyAllItemButton() {
-        String validateTitle = loginPage.verifyLogin();
-        String validateDesc = loginPage.verifyDesc();
-        String validateProduct = loginPage.verifyProduct();
-
-        assertEquals("Sauce Labs Backpack", validateTitle);
-        assertEquals("carry.allTheThings() with the sleek, streamlined Sly " +
-                "Pack that melds uncompromising style with unequaled laptop and tablet protection.", validateDesc);
-        assertEquals("Products", validateProduct);
-
-        System.out.println("Result Log-in\n" + validateTitle + "\n" + validateDesc + "\n" + validateProduct);
-    }
-
-
-
-
     @Then("see product at shopping cart")
     public void seeProductAtShoppingCart() {
-        assertEquals("1", allItemPages.countShopCart());
+        String ExpectedShopCart = "1";
+        assertEquals(ExpectedShopCart, allItemPages.countShopCart());
+        System.out.println("Result Shop Cart = " + ExpectedShopCart);
     }
+
+
 }

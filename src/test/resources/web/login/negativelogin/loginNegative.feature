@@ -11,14 +11,13 @@ Feature: message login
 
 
 @web
-#Scenario verify message login match with condition case
-    Scenario Template: Test verify message login
-      Given verify on homepage
-      And input "<username>" and "<password>"
-      Then click button login
-      Given message login "<Expected message>"
+   Scenario Template: Test verify message login
+      Given user is on homepage saucedemo
+      When user input username "<username>" and password "<password>"
+      And user click button login
+      Then user can see "<Expected message>"
 
-      Examples:
+  Examples:
         |     username             |   password        |                        Expected message                                   |
         |     standard_use         |   secret_sauce    | Epic sadface: Username and password do not match any user in this service |
         |     standard_user        |   secret_saucer   | Epic sadface: Username and password do not match any user in this service |

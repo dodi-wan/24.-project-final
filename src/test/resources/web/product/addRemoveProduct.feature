@@ -5,24 +5,24 @@ Feature: Add to cart product
 
 
   Background:
-    Given verify on homepage
-    And input "standard_user" and "secret_sauce"
-    Then click button login
-    Given verify login
+    Given user is on homepage saucedemo
+    When user input username "standard_user" and password "secret_sauce"
+    And user click button login
+    Then verify user already login page saucedemo
 
 
 @web
   Scenario: Test feature add to cart product
-    And click add to cart product
-    And click shop cart
+    When user click add to cart product
+    And user click shop cart
     Then see product at shopping cart
 
 
 @web
     Scenario: Test add product then remove it
-    And click add to cart product
-    Then remove product
-    Given text add to cart
+    When user click add to cart product
+    But user remove product
+    Then verify has been click remove
 
 
 

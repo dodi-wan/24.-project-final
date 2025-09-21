@@ -19,6 +19,8 @@ public class RemoveCartPages {
         driver.findElement(elementRemoveBackpack).click();
     }
 
+
+
     public void removeAllProduct(){
         driver.findElement(elementRemoveBackpack).click();
         driver.findElement(elementRemoveBikeLight).click();

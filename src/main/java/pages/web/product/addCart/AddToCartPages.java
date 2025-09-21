@@ -25,33 +25,47 @@ public class AddToCartPages {
     By titleRemoveBackPack = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[2]/div[2]/button[1]");
 
 
+
     public AddToCartPages(){
         wait = new WebDriverWait(driver, Duration.ofSeconds(3));
-    };
+    }
+
+
 
     public void adCartBackpack(){
         driver.findElement(addBackpack).click();
     }
 
+
+
     public void addCartBikeLight(){
         driver.findElement(addBikeLight).click();
     }
+
+
 
     public void addCartBoltTshirt(){
         driver.findElement(addBoltTshirt).click();
     }
 
+
+
     public void addCartFleeceJacket(){
         driver.findElement(addFleeceJacket).click();
     }
+
+
 
     public void addCartOnesie(){
         driver.findElement(addOnesie).click();
     }
 
+
+
     public void addCartTshirtRed(){
         driver.findElement(addThisrtRed).click();
     }
+
 
 
     public int getTotalProduct(){
@@ -77,5 +91,4 @@ public class AddToCartPages {
 
         return text;
     }
-
 }

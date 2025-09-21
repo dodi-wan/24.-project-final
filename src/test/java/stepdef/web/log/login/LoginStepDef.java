@@ -3,8 +3,10 @@ package stepdef.web.log.login;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import pages.web.log.login.LoginPage;
 
+import static helper.driver.Utilities.driver;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
@@ -17,38 +19,33 @@ public class LoginStepDef {
     }
 
 
-    @Given("verify on homepage")
-    public void verifyOnHomepage() {
-        String username = loginPage.usernameHomepage();
-        String password = loginPage.passwordHomepage();
-        String title = loginPage.titleHomepage();
-
-        assertEquals("Accepted usernames are:", username);
-        assertEquals("Password for all users:", password);
-        assertEquals("Swag Labs", title);
-
-        System.out.println("Result \n" + username + "\n" + password + "\n" + title);
+    @Given("user is on homepage saucedemo")
+    public void userIsOnHomepageSaucedemo() {
+        String currentUrl = driver.getCurrentUrl();
+        if (!currentUrl.contains("saucedemo.com")) {
+            driver.get("https://www.saucedemo.com/");
+        }
+        System.out.println("URL : " + currentUrl);
     }
 
 
-
-    @And("input {string} and {string}")
-    public void inputAnd(String username, String password) {
+    @When("user input username {string} and password {string}")
+    public void userInputUsernameAndPassword(String username, String password) {
         loginPage.inputUsername(username);
         loginPage.inputPassword(password);
     }
 
 
 
-    @Then("click button login")
-    public void clickButtonLogin() {
+    @And("user click button login")
+    public void userClickButtonLogin() {
         loginPage.clickButton();
     }
 
 
 
-    @Given("verify login")
-    public void verifyLogin() {
+    @Then("verify user already login page saucedemo")
+    public void verifyUserAlreadyLoginPageSaucedemo() {
         String validateTitle = loginPage.verifyLogin();
         String validateDesc = loginPage.verifyDesc();
         String validateProduct = loginPage.verifyProduct();
@@ -72,4 +69,16 @@ public class LoginStepDef {
         assertEquals(messageExpectation, messageActual);
         System.out.println("Result \n" + messageActual);
     }
+
+
+
+    @Then("user can see {string}")
+    public void userCanSee(String messageExpectation) {
+        String messageActual = loginPage.messageButton(messageExpectation);
+
+        assertEquals(messageExpectation, messageActual);
+        System.out.println("Result \n" + messageActual);
+    }
+
+
 }

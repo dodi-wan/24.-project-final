@@ -2,9 +2,11 @@ package stepdef.web.featureNavigate.homepage.menu;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import pages.web.featureNavigate.home.HomePages;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class AboutStepDef {
 
@@ -17,8 +19,8 @@ public class AboutStepDef {
 
 
 
-    @And("click {int} strips menu at top-left window")
-    public void clickStripsMenuAtTopLeftWindow(int arg0) {
+    @When("user click {int} strips menu at top-left window")
+    public void userClickStripsMenuAtTopLeftWindow(int arg0) {
         homePages.menuHomepage();
     }
 
@@ -33,17 +35,22 @@ public class AboutStepDef {
 
     @Then("verify new homepage about")
     public void verifyNewHomepageAbout() {
-        String verifyFirstText = homePages.verifyAboutFirst();
-        String verifySecondText = homePages.verifySecondAbout();
-        String verifyThirdText = homePages.verifyThirdAbout();
+        boolean verifyFirstText = homePages.verifyAboutFirst();
+        boolean verifySecondText = homePages.verifySecondAbout();
+        boolean verifyThirdText = homePages.verifyThirdAbout();
 
-        assertEquals("Turn quality into a strategic advantage—accelerate outcomes with Sauce AI.",
-                verifyFirstText);
-        assertEquals("Explore more", verifySecondText);
-        assertEquals("Build apps users love with AI-driven quality", verifyThirdText);
+        String textFirst = "Turn quality into a strategic advantage—accelerate outcomes with Sauce AI.";
+        String textSecond = "Explore more";
+        String textThird = "Build apps users love with AI-driven quality";
 
-        System.out.println("Result : " + verifyFirstText);
-        System.out.println("Result : " + verifySecondText);
-        System.out.println("Result : " + verifyThirdText);
+        assertTrue(verifyFirstText, textFirst);
+        assertTrue(verifySecondText, textSecond);
+        assertTrue(verifyThirdText, textThird);
+
+        System.out.println(textFirst + " = " + verifyFirstText);
+        System.out.println(textSecond + " = " + verifySecondText);
+        System.out.println(textThird + " = " + verifyThirdText);
     }
+
+
 }

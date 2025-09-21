@@ -31,12 +31,13 @@ public class CheckoutPages {
 
 
 
-    public CheckoutPages(){
+    public CheckoutPages() {
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
 
-    public void checkoutButton(){
+
+    public void checkoutButton() {
         try {
             WebElement element = wait.until(ExpectedConditions.elementToBeClickable(buttonCheckout));
             element.click();
@@ -49,7 +50,7 @@ public class CheckoutPages {
 
 
 
-    public void firstNameInput(String firstname){
+    public void firstNameInput(String firstname) {
         try {
             WebElement element = wait.until(ExpectedConditions.elementToBeClickable(inputFirstname));
             element.sendKeys(firstname);
@@ -62,7 +63,7 @@ public class CheckoutPages {
 
 
 
-    public void lastNameInput(String lastname){
+    public void lastNameInput(String lastname) {
         try {
             WebElement element = wait.until(ExpectedConditions.elementToBeClickable(inputLastname));
             element.sendKeys(lastname);
@@ -75,7 +76,7 @@ public class CheckoutPages {
 
 
 
-    public void zipCodeInput(String zipCode){
+    public void zipCodeInput(String zipCode) {
         try {
             WebElement element = wait.until(ExpectedConditions.elementToBeClickable(inputZipCode));
             element.sendKeys(zipCode);
@@ -87,7 +88,8 @@ public class CheckoutPages {
     }
 
 
-    public void continueButton(){
+
+    public void continueButton() {
         try {
             WebElement element = wait.until(ExpectedConditions.elementToBeClickable(buttonContinue));
             element.click();
@@ -99,7 +101,8 @@ public class CheckoutPages {
     }
 
 
-    public void finishButton(){
+
+    public void finishButton() {
         try {
             WebElement element = wait.until(ExpectedConditions.elementToBeClickable(buttonFinish));
             element.click();
@@ -112,13 +115,13 @@ public class CheckoutPages {
 
 
 
-    public void orderSuccess(){
+    public void orderSuccess() {
         driver.findElement(messageOrderSuccess).isDisplayed();
     }
 
 
 
-    public String messageOrder(String message){
+    public String messageOrder(String message) {
         String text;
         wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         element = wait.until(ExpectedConditions.visibilityOfElementLocated(orderMessage(message)));
@@ -126,7 +129,5 @@ public class CheckoutPages {
 
         return text;
     }
-
-
 }
 

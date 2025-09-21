@@ -13,15 +13,15 @@ public class MessagePages {
     }
 
 
+
     public void wrongUsername(String message){
         driver.findElement(wrong_username(message)).isDisplayed();
     }
+
 
 
     public String messageError(String message){
         element = driver.findElement(wrong_username(message));
         return element.getText();
     }
-
-
 }

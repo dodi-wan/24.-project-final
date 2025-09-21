@@ -27,20 +27,14 @@ public class SocialMediaPage {
     By linkedinApp = By.xpath("//a[normalize-space()='Open the app']");
 
 
+
     public SocialMediaPage(){
         wait = new WebDriverWait(driver, Duration.ofSeconds(5));
     }
 
 
+
     public void twitterXlogo(){
-//        try {
-//            WebElement element = wait.until(ExpectedConditions.elementToBeClickable(elementTwitterLogo));
-//            element.click();
-//        } catch (TimeoutException t){
-//            System.out.println("Timeout element not found " + t.getMessage());
-//        } catch (Exception e) {
-//            System.out.println("error " + e.getMessage());
-//        }
         driver.findElement(elementTwitterLogo).click();
     }
 
@@ -64,17 +58,8 @@ public class SocialMediaPage {
 
 
     public void facebookLogo(){
-//        try{
-//            WebElement element = wait.until(ExpectedConditions.elementToBeClickable(elementFacebookLogo));
-//            element.click();
-//        } catch (TimeoutException t){
-//            System.out.println("Timeout element not found " + t.getMessage());
-//        }  catch (Exception e) {
-//            System.out.println("error " + e.getMessage());
-//        }
         driver.findElement(elementFacebookLogo).click();
     }
-
 
 
 
@@ -93,22 +78,14 @@ public class SocialMediaPage {
     }
 
 
-    public void linkedinLogo(){
-//        try{
-//            WebElement element = wait.until(ExpectedConditions.elementToBeClickable(elementLinkedinLogo));
-//            element.click();
-//        } catch (TimeoutException t){
-//            System.out.println("Timeout element not found " + t.getMessage());
-//        }  catch (Exception e) {
-//            System.out.println("error " + e.getMessage());
-//        }
+
+    public void linkedinLogo() {
         driver.findElement(elementLinkedinLogo).click();
     }
 
 
 
     public boolean storeLinkedin() {
-
         try {
             wait = new WebDriverWait(driver, Duration.ofSeconds(15));
             element = wait.until(ExpectedConditions.visibilityOfElementLocated(joinLinkedin));
@@ -122,8 +99,8 @@ public class SocialMediaPage {
     }
 
 
-    public boolean validateLinkedin() {
 
+    public boolean validateLinkedin() {
         try {
             wait = new WebDriverWait(driver, Duration.ofSeconds(15));
             element = wait.until(ExpectedConditions.visibilityOfElementLocated(titleLinkedin));
@@ -137,8 +114,8 @@ public class SocialMediaPage {
     }
 
 
-    public boolean appLinkedin(){
 
+    public boolean appLinkedin() {
         try{
             wait = new WebDriverWait(driver, Duration.ofSeconds(15));
             element = wait.until(ExpectedConditions.visibilityOfElementLocated(linkedinApp));

@@ -12,10 +12,10 @@ Feature: Login automation non-credential
 
 @web
   Scenario Outline: Test login non-credential list website
-    Given verify on homepage
-    And input "<username>" and "<password>"
-    Then click button login
-    Given message login "<Expected message>"
+  Given user is on homepage saucedemo
+    When user input username "<username>" and password "<password>"
+    And user click button login
+    Then user can see "<Expected message>"
 
   Examples:
     |     username             |   password        |                        Expected message                                   |

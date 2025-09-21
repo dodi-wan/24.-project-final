@@ -14,17 +14,9 @@ public class LoginPage {
     private WebDriverWait wait;
     private WebElement element;
 
-
-    By elementListUsername = By.xpath("//h4[normalize-space()='Accepted usernames are:']");
-    By elementPassword = By.xpath("//h4[normalize-space()='Password for all users:']");
-    By elementTitle = By.xpath("(//div[@class='login_logo'])[1]");
-
-    By verifyHomepage = By.xpath("//div[text()='Swag Labs']");
     By username = By.id("user-name");
     By password = By.id("password");
     By button = By.id("login-button");
-    By elementVerifyLogin  = By.xpath("//div[text()='Swag Labs']");
-
 
     By validateTitle = By.xpath("//div[contains(text(),'Sauce Labs Backpack')]");
     By validateDesc = By.xpath("//div[contains(text(),'carry.allTheThings() with the sleek," +
@@ -37,45 +29,10 @@ public class LoginPage {
 
 
 
-
-    public String usernameHomepage(){
-        String text;
-
-        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        element = wait.until(ExpectedConditions.visibilityOfElementLocated(elementListUsername));
-        text = element.getText();
-
-        return text;
-    }
-
-
-
-    public String passwordHomepage() {
-        String text;
-
-        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        element = wait.until(ExpectedConditions.visibilityOfElementLocated(elementPassword));
-        text = element.getText();
-
-        return text;
-    }
-
-
-
-    public String titleHomepage() {
-        String text;
-
-        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        element = wait.until(ExpectedConditions.visibilityOfElementLocated(elementTitle));
-        text = element.getText();
-
-        return text;
-    }
-
-
     public void inputUsername(String userName){
         driver.findElement(username).sendKeys(userName);
     }
+
 
 
     public void inputPassword(String passwordUser){
@@ -83,9 +40,11 @@ public class LoginPage {
     }
 
 
+
     public void clickButton(){
         driver.findElement(button).click();
     }
+
 
 
     public String verifyLogin() {
@@ -96,7 +55,6 @@ public class LoginPage {
         text = element.getText();
 
         return text;
-//        driver.findElement(elementVerifyLogin).isDisplayed();
     }
 
 

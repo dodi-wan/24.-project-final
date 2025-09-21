@@ -14,9 +14,9 @@ import static io.cucumber.junit.platform.engine.Constants.PLUGIN_PROPERTY_NAME;
 @ConfigurationParameter(key = GLUE_PROPERTY_NAME, value = "stepdef.web, hooks.web")
 @ConfigurationParameter(
         key = PLUGIN_PROPERTY_NAME,
-        value = "pretty, html:build/reports/test/webTest.html, json:build/reports/test/apiTest.json"
+        value = "pretty, html:build/reports/test/webTest.html")
         //reports generate
-)
+
 
 
 public class RunnerTestWeb {
