@@ -62,6 +62,4 @@ public class FeatureAddCart {
 
         System.out.println("Result \n" + removeBackPack);
     }
-
-
 }

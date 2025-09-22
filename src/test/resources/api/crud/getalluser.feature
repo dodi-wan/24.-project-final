@@ -3,5 +3,5 @@
 Feature: Test data API
 
   Scenario: Test API GET data all users
-    Given show all the users dummyapi
+    When user GET all data on API dummyapi.io
     Then the response status code is 200

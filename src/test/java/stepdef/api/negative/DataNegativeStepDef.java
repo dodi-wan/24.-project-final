@@ -1,8 +1,8 @@
 package stepdef.api.negative;
 
 import helper.api.ApiUtils;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.json.JSONObject;
@@ -30,8 +30,9 @@ public class DataNegativeStepDef {
     }
 
 
-    @Given("input {string} {string} {string} {string} {string}")
-    public void input(String title, String firstname, String lastname, String email, String gender) throws IOException {
+
+    @When("user input {string} {string} {string} {string} {string}")
+    public void userInput(String title, String firstname, String lastname, String email, String gender) throws IOException {
         Map<String, Object> createData = new HashMap<>();
         createData.put("title", title);
         createData.put("firstName", firstname);
@@ -50,6 +51,8 @@ public class DataNegativeStepDef {
         System.out.println("result " + response.prettyPrint());
         System.out.println("id " + createId);
     }
+
+
 
     @Then("status code {int}")
     public void statusCode(int statuscode) {

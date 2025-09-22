@@ -11,7 +11,7 @@ Feature: update data existing
   "picture": "https://randomuser.me/api/portraits/med/men/61.jpg"
 
   Scenario Outline: Test update data dummy api
-    Given update data "<id>" "<firstName>" "<lastName>"
+    When user update data "<id>" "<firstName>" "<lastName>"
     Then response should be 200
 
     Examples:

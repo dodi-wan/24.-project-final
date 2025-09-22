@@ -1,8 +1,8 @@
 package stepdef.api.edge;
 
 import helper.api.ApiUtils;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.json.JSONObject;
@@ -28,7 +28,7 @@ public class EdgeEmailStepDef {
         postPage = new PostPage(apiUtils);
     }
 
-    @Given("user input data {string} {string} {string} {string}")
+    @When("user input data {string} {string} {string} {string}")
     public void userInputData(String title, String firstName, String lastName, String email) throws IOException {
         Map<String, Object> createData = new HashMap<>();
         createData.put("title", title);

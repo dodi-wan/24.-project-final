@@ -1,8 +1,8 @@
 package stepdef.api.get;
 
 import helper.api.ApiUtils;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import pages.api.get.GetPages;
@@ -26,11 +26,13 @@ public class GetStepDef {
     }
 
 
-    @Given("show all the users dummyapi")
-    public void showAllTheUsersDummyapi() throws IOException {
+
+    @When("user GET all data on API dummyapi.io")
+    public void userGETAllDataOnAPIDummyapiIo() throws IOException {
         response = getPages.getListUser();
         System.out.println(response.prettyPrint());
     }
+
 
 
     @Then("the response status code is {int}")

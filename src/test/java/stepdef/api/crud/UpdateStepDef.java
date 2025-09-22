@@ -1,8 +1,8 @@
 package stepdef.api.crud;
 
 import helper.api.ApiUtils;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.json.JSONObject;
@@ -30,8 +30,8 @@ public class UpdateStepDef {
     }
 
 
-    @Given("update data {string} {string} {string}")
-    public void updateData(String id, String firstName, String lastName) throws IOException {
+    @When("user update data {string} {string} {string}")
+    public void userUpdateData(String id, String firstName, String lastName) throws IOException {
         Map<String, Object> updateData = new HashMap<>();
         updateData.put("id", id);
         updateData.put("firstName", firstName);
@@ -44,8 +44,8 @@ public class UpdateStepDef {
 
         response = putPages.putData(updateData, id);
         System.out.println("update data " + response.prettyPrint());
-
     }
+
 
     @Then("response should be {int}")
     public void responseShouldBe(int statuscode) {
@@ -53,4 +53,6 @@ public class UpdateStepDef {
         System.out.println("status code " + response.statusCode());
 
     }
+
+
 }

@@ -1,8 +1,8 @@
 package stepdef.api.edge;
 
 import helper.api.ApiUtils;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.json.JSONObject;
@@ -30,8 +30,9 @@ public class EdgeStepDef {
     }
 
 
-    @Given("input data {string} {string} {string} {string} {string}")
-    public void inputData(String title, String firstname, String lastname, String email, String dateOfBirth) throws IOException {
+
+    @When("user input data {string} {string} {string} {string} {string}")
+    public void userInputData(String title, String firstname, String lastname, String email, String dateOfBirth) throws IOException {
         Map<String, Object> edgeData = new HashMap<>();
         edgeData.put("title", title);
         edgeData.put("firstName", firstname);
@@ -58,6 +59,4 @@ public class EdgeStepDef {
     public void codeIs(int expectedStatusCode) {
         assertEquals(expectedStatusCode, response.getStatusCode());
     }
-
-
 }

@@ -7,7 +7,7 @@
    dateOfBirth: string(ISO Date - value: 1/1/1900 - now)
 
   Scenario Outline: Test create field name more 50 characters
-    Given input data "<title>" "<firstname>" "<lastname>" "<email>" "<dateOfBirth>"
+    When user input data "<title>" "<firstname>" "<lastname>" "<email>" "<dateOfBirth>"
     Then code is 400
 
     Examples:

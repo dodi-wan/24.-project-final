@@ -1,13 +1,11 @@
 package stepdef.web.featureNavigate.filter;
 
 import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.jupiter.api.Assertions;
 import pages.web.featureNavigate.filterPages.FilterNamePages;
 import pages.web.log.login.LoginPage;
-import stepdef.web.log.login.LoginStepDef;
 
 import java.util.ArrayList;
 import java.util.Collections;

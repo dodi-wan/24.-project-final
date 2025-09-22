@@ -1,7 +1,7 @@
 
 
 @web
-Feature: Log out uses credential username and password
+Feature: Log out uses credential problem username and password
 
   Background:
     Given user is on homepage saucedemo

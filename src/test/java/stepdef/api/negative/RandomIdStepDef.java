@@ -1,8 +1,8 @@
 package stepdef.api.negative;
 
 import helper.api.ApiUtils;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import pages.api.get.GetPages;
@@ -25,12 +25,15 @@ public class RandomIdStepDef {
         getPages = new GetPages(apiUtils);
     }
 
-    @Given("get {string}")
-    public void get(String id) throws IOException {
+
+
+    @When("user get {string}")
+    public void userGet(String id) throws IOException {
         response = getPages.getUserById(id);
         System.out.println("result " + response);
-
     }
+
+
 
     @Then("response status code {int}")
     public void responseStatusCode(int statuscode) {

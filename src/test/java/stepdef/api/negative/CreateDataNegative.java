@@ -1,9 +1,7 @@
 package stepdef.api.negative;
 
 import helper.api.ApiUtils;
-import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
+import io.cucumber.java.en.*;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.json.JSONObject;
@@ -39,8 +37,9 @@ public class CreateDataNegative {
     }
 
 
-    @Given("create data {string} {string} {string} {string}")
-    public void createData(String title, String firstname, String lastname, String email) throws IOException {
+
+    @When("user create data {string} {string} {string} {string}")
+    public void userCreateData(String title, String firstname, String lastname, String email) throws IOException {
         Map<String, Object> createData = new HashMap<>();
         createData.put("title", title);
         createData.put("firstName", firstname);
@@ -60,26 +59,29 @@ public class CreateDataNegative {
     }
 
 
+
     @Then("response status code is {int}")
     public void responseStatusCodeIs(int statuscode) {
         assertEquals(statuscode, response.statusCode(), "status error");
     }
 
 
-    @And("delete data id")
-    public void deleteDataId() throws IOException {
+
+    @When("user delete data id")
+    public void userDeleteDataId() throws IOException {
         response = deletePages.deleteData(createId);
         System.out.println("result " + response.print());
     }
 
 
-    @Then("get id user")
-    public void getIdUser() throws IOException {
+
+    @But("user try get id already delete it")
+    public void userTryGetIdAlreadyDeleteIt() throws IOException {
         response = getPages.getUserById(createId);
         System.out.println("result " + response );
-
-
     }
+
+
 
     @Then("response code is {int}")
     public void responseCodeIs(int statuscode) {

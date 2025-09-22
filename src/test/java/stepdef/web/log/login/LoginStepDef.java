@@ -79,6 +79,4 @@ public class LoginStepDef {
         assertEquals(messageExpectation, messageActual);
         System.out.println("Result \n" + messageActual);
     }
-
-
 }

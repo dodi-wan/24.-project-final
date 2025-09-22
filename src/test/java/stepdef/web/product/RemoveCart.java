@@ -1,6 +1,5 @@
 package stepdef.web.product;
 
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.But;
 import io.cucumber.java.en.Then;
 import pages.web.product.removeCart.RemoveCartPages;

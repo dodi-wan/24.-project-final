@@ -23,14 +23,6 @@ public class PutPages {
                 .when()
                 .put("/user/"  + id);
     }
-
-
-
-
-
-
-
-
 }
 
 

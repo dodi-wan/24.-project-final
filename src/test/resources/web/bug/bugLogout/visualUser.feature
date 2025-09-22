@@ -1,7 +1,7 @@
 
 
 @web
-Feature: Log out uses credential username and password
+Feature: Log out uses credential visual username and password
 
   Background:
     Given user is on homepage saucedemo
@@ -10,7 +10,7 @@ Feature: Log out uses credential username and password
     Then verify user already login page saucedemo
 
   @web
-  Scenario: Test logout credential data glitch user
+  Scenario: Test logout credential data visual
     When user click 3 strips menu at top-left window
     And user click logout
     Then user already on homepage login

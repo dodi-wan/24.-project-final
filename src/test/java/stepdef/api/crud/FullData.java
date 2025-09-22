@@ -2,8 +2,8 @@ package stepdef.api.crud;
 
 import helper.api.ApiUtils;
 import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.json.JSONObject;
@@ -36,7 +36,8 @@ public class FullData {
     }
 
 
-    @Given("input {string} {string} {string} {string} {string} {string} {string}" +
+
+    @When("input {string} {string} {string} {string} {string} {string} {string}" +
             " and location {string} {string} {string} {string} {string}")
     public void inputAndLocation(String title, String firstname, String lastname, String email, String dateOfBirth,
                                  String phone, String picture, String street, String city, String state, String country,
@@ -78,11 +79,13 @@ public class FullData {
     }
 
 
+
     @Then("status code should {int}")
     public void statusCodeShould(int expectedCode) {
         System.out.println(response.statusCode());
         assertEquals(expectedCode, response.getStatusCode());
     }
+
 
 
     @And("delete user")
@@ -91,6 +94,7 @@ public class FullData {
         response = deletePages.deleteData(id);
         System.out.println(response.prettyPrint() + response.statusCode());
     }
+
 
 
     @Then("the response is {int}")

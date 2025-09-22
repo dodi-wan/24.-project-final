@@ -2,7 +2,7 @@ package stepdef.web.log.logout;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pages.web.log.logout.LogoutPages;

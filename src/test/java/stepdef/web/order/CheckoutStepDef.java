@@ -55,7 +55,6 @@ public class CheckoutStepDef {
 
 
 
-
     @Then("user can see title {string}")
     public void userCanSeeTitle(String expectedMessage) {
         String actualFirstMessage = checkoutPages.messageOrder(expectedMessage);

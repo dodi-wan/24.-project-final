@@ -1,9 +1,7 @@
 package stepdef.web.featureNavigate.homepage.featureAllitem;
 
 import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
 import pages.web.featureNavigate.featureAllitem.AllitemPages;
 import pages.web.log.login.LoginPage;
 
@@ -42,6 +40,4 @@ public class AllitemStepDef {
         assertEquals(ExpectedShopCart, allItemPages.countShopCart());
         System.out.println("Result Shop Cart = " + ExpectedShopCart);
     }
-
-
 }

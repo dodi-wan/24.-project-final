@@ -18,4 +18,5 @@ public class FilterDataPages {
                 .when()
                 .get("/user?created=1");
     }
+
 }
